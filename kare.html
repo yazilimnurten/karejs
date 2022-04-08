@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kare alan ve hacim hesaplama</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .header {
+            margin-left: 0.6%;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        
+        .header button {
+            width: 28%;
+            font-size: 15px;
+            margin-top: 60px;
+            margin-left: 4%;
+        }
+        
+        .kare {
+            margin-left: 2%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+        }
+        
+        .kare1 {
+            opacity: 0;
+            border: 1px solid black;
+            width: 30%;
+            height: 400px;
+            display: flex;
+            flex-direction: row;
+            font-size: 20px;
+            margin-left: 25px;
+        }
+        
+        img {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            margin-top: 160px;
+        }
+        
+        .dikdortgen {
+            opacity: 0;
+            border: 1px solid black;
+            width: 30%;
+            height: 400px;
+            display: flex;
+            flex-direction: row;
+            font-size: 20px;
+            margin-left: 25px;
+        }
+        
+        .yamuk {
+            opacity: 0;
+            border: 1px solid black;
+            width: 30%;
+            height: 400px;
+            display: flex;
+            flex-direction: row;
+            font-size: 20px;
+            margin-left: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alan">
+        <div class="header">
+
+            <button onclick="btnkare()">KARE</button>
+
+            <button onclick="btndik()">DİKDÖRTGEN</button>
+
+            <button onclick="btnymk() ">YAMUK</button>
+
+        </div>
+        <div class="kare">
+
+            <div class="kare1" id="kares">
+
+                <div class="sayilar">
+                    <h3>KARENİN ALANINI HESAPLAMA</h3>
+                    <label>alan</label>
+                    <input type="text" id="kenar" placeholder="kenarı giriniz">
+                    <br>
+                    <input type="button" id="hesapla" value="hesapla"> <br>
+
+                    <div id="kare_alan"></div> <img src="images.png" alt="KARE" width="100" height="100">
+
+                </div>
+
+            </div>
+            <div class="dikdortgen" id="dikdort">
+                <div class="sayilar">
+                    <h3>DİKDÖRTGENİN ALANINI HESAPLAMA</h3>
+                    <label>a sayısını giriniz</label>
+                    <input type="text" id="kenar1" placeholder=" a sayısı">
+                    <br> <label> b sayısını giriniz</label>
+                    <input type="text" id="kenar2" placeholder="b sayısı">
+                    <input type="button" id="dik" value="hesapla" onclick="dik()"> <br>
+
+                    <div id="dikalan"></div> <img src="index.png" alt="DİKDÖRTGEN" width="100" height="100">
+
+                </div>
+
+
+
+            </div>
+            <div class="yamuk" id="yamukis">
+
+                <div class="sayilar">
+                    <h3>YAMUĞUN ALANINI HESAPLAMA</h3>
+                    <label>üst kenar uzunluğu</label>
+                    <input type="text" id="ykenar" placeholder="üstkenar uzunluğu">
+                    <br> <label>alt kenar uzunluğu</label>
+                    <input type="text" id="dkenar" placeholder="alt kenar uzunluğu"> <br>
+                    <label> yükseklik</label><input type="text" id="yukseklik" placeholder="yüksekliği giriniz">
+                    <input type="button" id="yamukalan" value="hesapla" onclick="yamukalan()"> <br>
+                    <div id="yamukol"></div>
+
+                    <img src="yamuk.png " alt="YAMUK " width="100 " height="100 ">
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function hesapla() {
+            var sayi = document.getElementById("kenar").value;
+            sayi = Number(sayi);
+            var alan = sayi * sayi;
+            var cevre = sayi * 4;
+            document.getElementById("kare_alan").innerHTML = alan;
+            // alert("karenin alanı:" + alan + " karenin çevresi:" + cevre)
+
+        }
+        var hesapbtn = document.getElementById("hesapla");
+        hesapbtn.onclick = hesapla;
+
+        function dik() {
+            var sayi1 = document.getElementById("kenar1").value;
+            var sayi2 = document.getElementById("kenar2").value;
+            sayi1 = Number(sayi1);
+            sayi2 = Number(sayi2);
+            var alan = sayi1 * sayi2;
+            var cevre = (sayi1 * sayi2) * 2;
+            document.getElementById("dikalan").innerHTML = cevre;
+        }
+
+        function yamukalan() {
+            var sayi3 = document.getElementById("ykenar").value;
+            var sayi4 = document.getElementById("dkenar").value;
+            var sayi5 = document.getElementById("yukseklik").value;
+            sayi3 = Number(sayi3);
+            sayi4 = Number(sayi4);
+            sayi5 = Number(sayi5);
+            var yamuk = (sayi3 + sayi4) * sayi5 / 2;
+            document.getElementById("yamukol").innerHTML = yamuk;
+        }
+
+
+        function btnkare() {
+            var kare1 = document.getElementById("kares").style.opacity = 1;
+
+        }
+
+        function btndik() {
+            var dikdortgen = document.getElementById("dikdort").style.opacity = 1;
+        }
+
+        function btnymk() {
+            var yamuk = document.getElementById("yamukis").style.opacity = 1;
+        }
+    </script>
+
+    <!--<script src="kare.js "></script>-->
+</body>
+
+</html>
